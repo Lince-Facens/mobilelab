@@ -8,9 +8,9 @@ permalink: /setting-up/stm32f10x/
 ## Installation
 
 ### Eclipse IDE for C/C++
-Eclipse will be the code IDE for developing software for the STM32.
+We'll be Eclipse as our primary software development tool for the STM32, every other tool will be configured to run through Eclipse.
 
-* Download it from [Eclipse Packages](https://www.eclipse.org/downloads/packages/) and extract it.
+* Download it from [the official website](https://www.eclipse.org/downloads/packages/) and extract it.
 * Run `./eclipse`
 * Open **Help -> Eclipse Marketplace** and install the **GNU MCU Eclipse** plugin.
 
@@ -22,9 +22,9 @@ The GNU Compiler Collection for the Arm architecture.
 	* or set the "Toolchain Folder" in the GNU MCU Eclipse plugin settings at **Window -> Preferences -> MCU -> Global ARM Toolchain Paths**
 
 ### ST-Link
-We'll be using an open source version of the ST Microelectronics ST-Link Tools
+We'll be using an open source version of the ST Microelectronics ST-Link Tools that runs on Linux. This tool allow us to flash the chip.
 
-Follow the installation instructions from the [README at GitHub](https://github.com/texane/stlink/blob/master/README.md).
+Follow the installation instructions from their [README at GitHub](https://github.com/texane/stlink/blob/master/README.md).
 
 After building it, copy `st-flash` to the `/usr/bin/` directory by running:
 ```
@@ -32,16 +32,18 @@ cp st-flash /usr/bin/
 ```
 
 ### OpenOCD
+OpenOCD allow us to fully debug software directly on the chip.
 
-
-Follow the installation instructions at their [Getting OpenOCD](http://openocd.org/getting-openocd/) page.
-Note: If you are building from source, don't forget to enable ST-Link.
+Follow the installation instructions at their [instructions page](http://openocd.org/getting-openocd/).
+Note: If you are building it from source, don't forget to enable ST-Link.
 
 You also need to set the "Toolchain Folder" in the GNU MCU Eclipse plugin settings at **Window -> Preferences -> MCU -> Global OpenOCD Path**, which needs to point to OpenOCD `bin` directory.
 
 ## Compiling
 
 Open Eclipse and create a new *C/C++ project* -> *C Managed Build* -> *STM32F10x C/C++ Project* -> *ARM Cross GCC*.
+
+You may want to set "Use system calls" to "Semihosting" in case you need to print messages into the console.
 
 You should be able to create and compile the project if the GNU MCU Eclipse plugin and the GCC Arm are both installed correctly.
 
@@ -55,6 +57,8 @@ You'll need to locate two files inside the OpenOCD installation directory, they 
 ```
 Set the parameters above to the **Config options** in the **Debugger** tab.
 
+![OpenOCD Eclipse Config Options](https://i.imgur.com/VACTAg2.png)
+
 Connect the hardware, with each port mapped as listed below:
 
 | st-linkv2 | stm32f103c8t6 |
@@ -64,10 +68,10 @@ Connect the hardware, with each port mapped as listed below:
 | SWCLK | CLK |
 | 3.3V | 3.3V |
 
-You should be able to run the newly created debug configuration if OpenOCD was installed and configured correctly. Try to add breakpoints.
+You should be able to run the newly created debug configuration if OpenOCD was installed and configured correctly. You can test it out by running it and adding breakpoints to your code.
 
 ## Flashing
-You can configure release flashing by following the instructions below.
+You can configure the flashing process for release through Eclipse by following the instructions below.
 
 Right click the project, go to **Properties -> C/C++ Build -> GNU ARM Cross Create Flash Image -> General** and set the "Output File Format" to "Raw Binary".
 
@@ -79,3 +83,6 @@ Open **Run -> External Tools -> External Tools Configuration**, create a new con
 * Set the location to the st-link executable (run `whereis st-link`)
 * Set the workspace to the project's release directory. (use Browse Workspace)
 * Set the arguments to `write ${project_name}.bin 0x8000000`
+
+You should be able to run the configuration to flash the device.
+
