@@ -16,3 +16,4 @@ This repository contains all the documentation for the mobilelab project.
 
 ##  Embedded System (Control)
 * [Installing development stack](https://lince-facens.github.io/mobilelab/setting-up/stm32f10x/)
+* [Setting up the CAN bus](https://lince-facens.github.io/mobilelab/setting-up/can-bus/)
