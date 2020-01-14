@@ -57,7 +57,7 @@ You'll need to locate two files inside the OpenOCD installation directory, they 
 ```
 Set the parameters above to the **Config options** in the **Debugger** tab.
 
-![OpenOCD Eclipse Config Options](https://i.imgur.com/VACTAg2.png)
+![OpenOCD Eclipse Config Options](img/openocd-debugger-config.png)
 
 Connect the hardware, with each port mapped as listed below:
 
