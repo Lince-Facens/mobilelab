@@ -13,6 +13,7 @@ In the Mobilelab project we wanted to start using the CAN Bus to improve the rel
 ## Software
 ### NVIDIA Jetson TX2
 The Jetson TX2 supports two CAN ports, in our case we'll only use CAN0 located in the J26 header:
+
 | J26 Pin | Description |
 | :-----: | :---------: |
 |       5 | CAN0 RX     |
@@ -41,6 +42,7 @@ candump can0
 ### STM32F103C8T6
 
 The STM32F103C8T6 board also comes with two CAN ports. In our case we are only going to use CAN1.
+
 | STM32 Pin | Description |
 | :-------: | :---------: |
 |        B8 | CAN1 RX     |
