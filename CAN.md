@@ -1,4 +1,4 @@
-﻿---
+---
 title: Setting up the CAN Bus
 permalink: /setting-up/can-bus/
 ---
@@ -8,7 +8,7 @@ permalink: /setting-up/can-bus/
 In the Mobilelab project we wanted to start using the CAN Bus to improve the reliability and speed of the communication.
 
 ## Hardware
-![Hardware Schematic](img/schematic_can.svg)
+![Hardware Schematic](img/schematic-can.svg)
 
 ## Software
 ### NVIDIA Jetson TX2
